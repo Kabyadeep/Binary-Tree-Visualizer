@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BST Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Binary Search Tree Visualizer</h1>
+        <p>Insert values and visualize BST operations</p>
+    </header>
+
+    <section class="controls">
+        <input type="number" id="valueInput" placeholder="Enter a number">
+        <button id="insertBtn">Insert</button>
+        <button id="searchBtn">Search</button>
+
+
+        <div class="traversal-buttons">
+            <button id="inorderBtn">Inorder</button>
+            <button id="preorderBtn">Preorder</button>
+            <button id="postorderBtn">Postorder</button>
+        </div>
+    </section>
+
+     <section class="tree-container">
+       <svg id="tree-lines"></svg>
+     </section>
+
+    <section class="output">
+        <h3>Traversal Output:</h3>
+        <div id="outputText"></div>
+    </section>
+<script src="script.js"></script>
+</body>
+</html>
