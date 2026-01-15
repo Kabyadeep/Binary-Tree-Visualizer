@@ -1,60 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #ffffff);
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
+/* Header */
 header {
-    margin: 20px;
+    padding: 20px;
 }
 
+header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+header p {
+    color: #555;
+}
+
+/* Controls */
 .controls {
     margin: 20px;
 }
 
+.controls input {
+    padding: 8px 10px;
+    font-size: 16px;
+    width: 180px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.controls button {
+    padding: 8px 14px;
+    margin: 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Traversal buttons */
+.traversal-buttons button {
+    background-color: #2ecc71;
+}
+
+.traversal-buttons button:hover {
+    background-color: #27ae60;
+}
+
+/* Tree container */
 .tree-container {
     position: relative;
-    height: 400px;
+    min-height: 350px;
     margin-top: 40px;
 }
 
-#tree-lines {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-}
-
+/* Nodes */
 .node {
     position: absolute;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: #3498db;
+    background: #3498db;
     color: white;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    transition: background-color 0.5s, left 0.5s, top 0.5s;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
 }
 
 .node.active {
-    background-color: orange;
+    background-color: #f39c12;
+    transform: scale(1.1);
 }
 
 .node.found {
-    background-color: green;
+    background-color: #2ecc71;
 }
 
 .node.not-found {
-    background-color: red;
+    background-color: #e74c3c;
 }
-.level {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-    gap: 30px;
+
+/* Output */
+.output {
+    margin: 30px auto;
+    width: 70%;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.output h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+#outputText {
+    font-size: 16px;
+    color: #333;
+}
+
+/* SVG lines */
+#tree-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
