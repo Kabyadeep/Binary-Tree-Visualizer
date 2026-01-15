@@ -53,9 +53,13 @@ The project focuses on **learning data structures through visualization** rather
 ## 📂 Project Structure
 
 Binary-Tree-Visualizer/
+
 │
+
 ├── index.html # User Interface
+
 ├── style.css # Styling and layout
+
 └── script.js # BST logic and animations
 
 
