@@ -141,6 +141,25 @@ function drawTreeFromBackend(tree) {
     drawNode(tree, width / 2, 20, 140);
 }
 
+const deleteBtn = document.getElementById("deleteBtn");
+
+deleteBtn.addEventListener("click", () => {
+    const value = parseInt(valueInput.value);
+    if (isNaN(value)) return;
+
+    fetch("http://127.0.0.1:5000/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ value })
+    })
+        .then(res => res.json())
+        .then(data => {
+            outputText.textContent = data.message;
+            drawTreeFromBackend(data.tree);
+            valueInput.value = "";
+        });
+});
+
 
 // Traversals
 inorderBtn.addEventListener("click", () => {

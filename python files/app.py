@@ -1,3 +1,4 @@
+from platform import node
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -30,6 +31,34 @@ class BST:
                     current.right = Node(value)
                     return
                 current = current.right
+    
+    def delete(self, node, value):
+    if not node:
+        return node
+
+    if value < node.data:
+        node.left = self.delete(node.left, value)
+    elif value > node.data:
+        node.right = self.delete(node.right, value)
+    else:
+        # Case 1 & 2
+        if not node.left:
+            return node.right
+        elif not node.right:
+            return node.left
+
+        # Case 3: two children
+        temp = self.find_min(node.right)
+        node.data = temp.data
+        node.right = self.delete(node.right, temp.data)
+
+    return node
+
+    def find_min(self, node):
+    current = node
+    while current.left:
+        current = current.left
+    return current
 
     def inorder(self, node, result):
         if node:
@@ -67,6 +96,15 @@ def serialize_tree(node):
         "left": serialize_tree(node.left),
         "right": serialize_tree(node.right)
     }
+
+@app.route("/delete", methods=["POST"])
+def delete_value():
+    value = request.json.get("value")
+    bst.root = bst.delete(bst.root, value)
+    return jsonify({
+        "message": f"Deleted {value}",
+        "tree": serialize_tree(bst.root)
+    })
 
 @app.route("/inorder")
 def inorder():
