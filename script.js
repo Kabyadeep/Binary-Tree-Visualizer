@@ -160,6 +160,24 @@ deleteBtn.addEventListener("click", () => {
         });
 });
 
+const avlBtn = document.getElementById("avlBtn");
+
+avlBtn.addEventListener("click", () => {
+    const value = parseInt(valueInput.value);
+    if (isNaN(value)) return;
+
+    fetch("http://127.0.0.1:5000/avl_insert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ value })
+    })
+        .then(res => res.json())
+        .then(data => {
+            outputText.textContent = data.message;
+            drawTreeFromBackend(data.tree);
+            valueInput.value = "";
+        });
+});
 
 // Traversals
 inorderBtn.addEventListener("click", () => {
